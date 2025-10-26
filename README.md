@@ -23,8 +23,6 @@
 
 An interactive web-based educational chatbot that provides engaging learning experiences across a wide variety of topics through AI-powered conversations and interactive modules.
 
-<br>
-
 ## ✨ Features
 
 <table>
@@ -68,7 +66,7 @@ An interactive web-based educational chatbot that provides engaging learning exp
   </tr>
 </table>
 
-<br>
+
 ## 🛠️ Technology Stack
 
 <p align="center">
@@ -86,6 +84,7 @@ An interactive web-based educational chatbot that provides engaging learning exp
 <br>
 ## 🚀 Getting Started
 
+
 ### 📋 Prerequisites
 
 <p align="center">
@@ -97,7 +96,7 @@ An interactive web-based educational chatbot that provides engaging learning exp
 - An API key from DeepSeek (for AI functionality)
 - Basic understanding of HTML/JavaScript (for customization)
 
-<br>
+
 ### ⚙️ Installation
 
 ```bash
@@ -129,7 +128,7 @@ To configure the AI tutor behavior, modify the `SYSTEM_PROMPT` variable in `scri
 
 </details>
 
-<br>
+
 ## 📖 Usage
 
 ### Getting Started
@@ -153,7 +152,7 @@ To configure the AI tutor behavior, modify the `SYSTEM_PROMPT` variable in `scri
 
 </div>
 
-<br>
+
 ## 📁 Project Structure
 
 ```
@@ -164,7 +163,7 @@ demo/
 └── README.md       # This documentation file
 ```
 
-<br>
+
 ## 🏗️ Key Components
 
 ### Chat Interface
@@ -182,7 +181,7 @@ demo/
 - Instant feedback and scoring
 - Targeted review for weak areas
 
-<br>
+
 ## 🔌 API Integration
 
 The application uses the DeepSeek API for AI functionality:
@@ -193,7 +192,7 @@ const API_URL = 'https://api.deepseek.com/chat/completions';
 
 Requests are made with conversation history to maintain context across messages.
 
-<br>
+
 ## 🌐 Browser Compatibility
 
 <p align="center">
@@ -205,7 +204,7 @@ Requests are made with conversation history to maintain context across messages.
 
 > **Note**: For optimal performance, we recommend using the latest version of Chrome or Firefox.
 
-<br>
+
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
