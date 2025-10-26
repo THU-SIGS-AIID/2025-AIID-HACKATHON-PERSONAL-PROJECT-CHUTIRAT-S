@@ -81,7 +81,7 @@ An interactive web-based educational chatbot that provides engaging learning exp
 | **Icons** | Font Awesome | User interface icons and visual elements |
 | **Typography** | Inter Font Family | Clean, readable text throughout the application |
 
-<br>
+
 ## 🚀 Getting Started
 
 
