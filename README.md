@@ -23,6 +23,8 @@
 
 An interactive web-based educational chatbot that provides engaging learning experiences across a wide variety of topics through AI-powered conversations and interactive modules.
 
+<br>
+
 ## ✨ Features
 
 <table>
