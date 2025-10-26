@@ -3,10 +3,10 @@
 <a name="top"></a>
 
 <p align="center">
-  <a href="https://github.com/THU-SIGS-AIID/2025-AIID-HACKATHON-PERSONAL-PROJECT-CHUTIRAT-SAENGYINGYONGWATTANA">
+  <a href="https://github.com/THU-SIGS-AIID/2025-AIID-HACKATHON-PERSONAL-PROJECT-CHUTIRAT-S">
     <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
   </a>
-  <a href="https://github.com/THU-SIGS-AIID/2025-AIID-HACKATHON-PERSONAL-PROJECT-CHUTIRAT-SAENGYINGYONGWATTANA/blob/main/LICENSE">
+  <a href="https://github.com/THU-SIGS-AIID/2025-AIID-HACKATHON-PERSONAL-PROJECT-CHUTIRAT-S/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
   </a>
   <a href="https://platform.deepseek.com/">
