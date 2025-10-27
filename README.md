@@ -22,6 +22,9 @@
 </p>
 
 An interactive web-based educational chatbot that provides engaging learning experiences across a wide variety of topics through AI-powered conversations and interactive modules.
+<br>
+**Try Now:** https://misceltutorai-demo.zeabur.app/
+> **Note**: the learning materials could take up to 5 minutes to be generated ⏱️
 
 ## ✨ Features
 
