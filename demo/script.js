@@ -472,10 +472,9 @@ function buildContextualPrompt(userMessage, context) {
                  <i class="fas fa-robot"></i> 
              </div> 
              <div class="message-content"> 
-                 <p>I've created an interactive learning module about <strong>${topic}</strong>! 🎓</p> 
+                 <p>I've created the interactive learning module! 🎓</p> 
                  <div class="embedded-module-container"> 
                      <div class="module-header"> 
-                         <h3>Interactive Learning: ${topic}</h3> 
                          <div class="module-actions"> 
                              <button class="btn btn-secondary btn-sm open-module-tab"> 
                                  <i class="fas fa-external-link-alt"></i> Open New Tab 
@@ -969,82 +968,61 @@ function processMessageContent(content) {
 }
 
 async function resetChat() {
-    // Show loading indicator immediately
-    showLoading();
+    // Terminate any ongoing LLM request first
+    if (abortController) {
+        abortController.abort();
+        abortController = null;
+    }
     
-    // Clear the chat messages but keep the loading message
+    // Clear any pending AI request
+    currentAIRequest = null;
+    
+    // Hide loading indicator if it's showing
+    hideLoading();
+    
+    // Clear the chat messages completely
     if (chatMessages) {
-        // Remove all messages except the loading message
-        const messages = Array.from(chatMessages.children);
-        messages.forEach(msg => {
-            if (!msg.classList.contains('loading-message')) {
-                msg.remove();
-            }
-        });
+        chatMessages.innerHTML = '';
     }
     
-    // Create a new abort controller for the reset operation
-    const resetAbortController = new AbortController();
+    // Reset state immediately
+    currentTopic = null;
+    currentLessons = [];
+    currentLessonIndex = 0;
+    topicSuggestionCount = 0;
+    userLearningProgress = {};
+    quizResults = null;
+    awaitingTopicSpecifics = false;
+    pendingTopic = null;
     
-    try {
-        const welcomeMessage = await callAI("Generate a welcoming message that introduces yourself as a Miscellaneous Tutor and explains you can help with interactive learning on any topic. Ask what they want to learn or if they need suggestions.", {}, resetAbortController);
-        
-        // Process the welcome message to remove REGULAR_CHAT: prefix if present
-        const processedMessage = welcomeMessage.replace(/^REGULAR_CHAT:\s*/i, '');
-        
-        // Remove the loading message
-        hideLoading();
-        
-        if (chatMessages) {
-            chatMessages.innerHTML = `
-                <div class="message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        ${processedMessage}
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Reset state
-        currentTopic = null;
-        currentLessons = [];
-        currentLessonIndex = 0;
-        topicSuggestionCount = 0;
-        userLearningProgress = {};
-        quizResults = null;
-        awaitingTopicSpecifics = false;
-        pendingTopic = null;
-        
-        // Clear localStorage
-        localStorage.removeItem('chatMessages');
-        
-    } catch (error) {
-        console.error('Error resetting chat:', error);
-        
-        // Remove the loading message
-        hideLoading();
-        
-        if (chatMessages) {
-            chatMessages.innerHTML = `
-                <div class="message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Welcome! I'm your Miscellaneous Tutor. What would you like to learn about today?</p>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Clear localStorage even on error
-        localStorage.removeItem('chatMessages');
-    } finally {
-        closeLearningPanel();
+    // Clear localStorage
+    localStorage.removeItem('chatMessages');
+    
+    // Reset send button to normal state
+    if (sendButton) {
+        sendButton.innerHTML = '<i class="fas fa-paper-plane"></i>';
+        sendButton.classList.remove('btn-danger');
+        sendButton.classList.add('btn-primary');
+        sendButton.disabled = false;
     }
+    
+    // Display static welcome message without calling AI
+    if (chatMessages) {
+        chatMessages.innerHTML = `
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Welcome! I'm your Miscellaneous Tutor. I can help you learn about any topic with interactive lessons, quizzes, and personalized explanations.</p>
+                    <p>What would you like to learn about today? You can ask me about science, history, technology, or anything else you're curious about!</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Close learning panel
+    closeLearningPanel();
 }
 
 function toggleTheme() {
